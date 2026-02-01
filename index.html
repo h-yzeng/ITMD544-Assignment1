@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hospital Management System</h1>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="#" data-page="doctors">Doctors</a></li>
+                    <li><a href="#" data-page="patients">Patients</a></li>
+                    <li><a href="#" data-page="treatments">Treatments</a></li>
+                    <li><a href="#" data-page="prescriptions">Prescriptions</a></li>
+                    <li><a href="#" data-page="schedules">Schedules</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <div id="dashboard-page" class="page active">
+                <h2>Dashboard</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Doctors</h3>
+                        <p id="total-doctors" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Patients</h3>
+                        <p id="total-patients" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Treatments</h3>
+                        <p id="total-treatments" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Prescriptions</h3>
+                        <p id="active-prescriptions" class="stat-value">0</p>
+                    </div>
+                </div>
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Recent Treatments</h3>
+                        <div id="recent-treatments"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Department Statistics</h3>
+                        <div id="department-stats"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="doctors-page" class="page">
+                <h2>Doctors Management</h2>
+                <div class="action-bar">
+                    <button id="add-doctor-btn" class="btn btn-primary">Add New Doctor</button>
+                    <input type="text" id="doctor-search" placeholder="Search doctors...">
+                </div>
+                <div id="doctors-table-container">
+                    <table id="doctors-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Doctor ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Specializations</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="doctors-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="patients-page" class="page">
+                <h2>Patients Management</h2>
+                <div class="action-bar">
+                    <button id="add-patient-btn" class="btn btn-primary">Add New Patient</button>
+                    <input type="text" id="patient-search" placeholder="Search patients...">
+                </div>
+                <div id="patients-table-container">
+                    <table id="patients-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Date of Birth</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patients-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="treatments-page" class="page">
+                <h2>Treatments Management</h2>
+                <div class="action-bar">
+                    <button id="add-treatment-btn" class="btn btn-primary">Add New Treatment</button>
+                    <input type="text" id="treatment-search" placeholder="Search treatments...">
+                </div>
+                <div id="treatments-table-container">
+                    <table id="treatments-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Treatment ID</th>
+                                <th>Patient</th>
+                                <th>Doctor</th>
+                                <th>Date</th>
+                                <th>Diagnosis</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="treatments-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="prescriptions-page" class="page">
+                <h2>Prescriptions Management</h2>
+                <div class="action-bar">
+                    <button id="add-prescription-btn" class="btn btn-primary">Add New Prescription</button>
+                    <input type="text" id="prescription-search" placeholder="Search prescriptions...">
+                </div>
+                <div id="prescriptions-table-container">
+                    <table id="prescriptions-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Prescription ID</th>
+                                <th>Patient</th>
+                                <th>Medication</th>
+                                <th>Dosage</th>
+                                <th>Frequency</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prescriptions-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="schedules-page" class="page">
+                <h2>Doctor Schedules</h2>
+                <div class="action-bar">
+                    <button id="add-schedule-btn" class="btn btn-primary">Add New Schedule</button>
+                    <select id="schedule-clinic-filter" title="Filter by clinic">
+                        <option value="">All Clinics</option>
+                    </select>
+                    <select id="schedule-day-filter" title="Filter by day">
+                        <option value="">All Days</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                </div>
+                <div id="schedules-table-container">
+                    <table id="schedules-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Doctor</th>
+                                <th>Clinic</th>
+                                <th>Day</th>
+                                <th>Hours</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedules-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <div id="notification-container"></div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
